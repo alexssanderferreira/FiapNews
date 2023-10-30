@@ -95,5 +95,20 @@ namespace FiapNews.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+
+        [Authorize(Roles = "ADMINISTRADOR")]
+        [HttpDelete("{id}")]
+        public override async Task<IActionResult> DeletarAsync(Guid id)
+        {
+            try
+            {
+                await Service.DeletarAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
     }
 }

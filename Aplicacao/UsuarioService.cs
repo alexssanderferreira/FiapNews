@@ -1,7 +1,6 @@
 ﻿using Aplicacao.Contratos.Persistencia;
 using Aplicacao.Contratos.Servico;
 using Aplicacao.DTOs;
-using Aplicacao.DTOs.Usuario;
 using Dominio.Entidades;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;

@@ -83,6 +83,21 @@ namespace FiapNews.Controllers
             }
         }
 
+        [Authorize(Roles = "ADMINISTRADOR")]
+        [HttpDelete("{id}")]
+        public override async Task<IActionResult> DeletarAsync(Guid id)
+        {
+            try
+            {
+                await Service.DeletarAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
 
         [AllowAnonymous]
         [HttpGet("Obter-Todos")]
