@@ -20,7 +20,7 @@ public class NoticiaController : BaseController<Noticia, NoticiaRetornoDto, Noti
         {
             return Ok(Service.ObterNoticiaCategoria(id));
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
         }

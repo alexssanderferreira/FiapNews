@@ -95,7 +95,7 @@ public class NoticiaService : ServiceBase<NoticiaRetornoDto, NoticiaDto, Noticia
         if (string.IsNullOrWhiteSpace(dto.SubTitulo)) _erros.Add("informe o sub titulo da noticia");
         if (string.IsNullOrWhiteSpace(dto.Lead)) _erros.Add("informe o lead da noticia");
         if (!dto.Categorias.Any()) _erros.Add("Informe uma categoria");
-        if (!dto.Autores.Any()) _erros.Add("Informe uma autor");
+        if (!dto.Autores.Any()) _erros.Add("Informe um autor");
         if (_erros.Any()) throw new Exception(string.Join("\n", _erros));
     }
 

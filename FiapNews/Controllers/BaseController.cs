@@ -36,8 +36,8 @@ public class BaseController<TEntity, TDto, TDtoMod, TService> : ControllerBase
         }
     }
 
-    [HttpPut("{Id}")]
-    public virtual async Task<IActionResult> AlterarAsync(TDtoMod dto, Guid id)
+    [HttpPut("{id}")]
+    public virtual async Task<IActionResult> AlterarAsync(Guid id, TDtoMod dto)
     {
         try
         {

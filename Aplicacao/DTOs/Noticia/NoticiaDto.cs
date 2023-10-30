@@ -25,7 +25,6 @@ public class NoticiaDto
     public ICollection<AutorNoticiaDto> Autores { get; set; }
     public ICollection<CategoriaNoticiaDto> Categorias { get; set; }
     public string Regiao { get; set; }
-    public string LinkDeCompartilhamento { get; set; }
     public ICollection<string> Imagens { get; set; }
 
 }
