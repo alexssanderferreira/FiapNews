@@ -56,9 +56,9 @@ namespace Aplicacao
                 throw new ArgumentNullException(nameof(entidade), "Administrador informada não encontrado.");
         }
 
-        public async Task AlterarSenha(AlterarSenhaDto alterarSenhaDto)
+        public async Task AlterarSenha(AlterarSenhaDto alterarSenhaDto, Guid id)
         {
-            await _usuarioService.AlterarSenha(alterarSenhaDto);
+            await _usuarioService.AlterarSenha(alterarSenhaDto, id);
         }
 
         public async Task RecuperarSenha(UsuarioSenhaDto usuarioSenhaDto)

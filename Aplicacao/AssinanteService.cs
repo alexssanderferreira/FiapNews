@@ -105,9 +105,9 @@ namespace Aplicacao
             return _mapper.Map<IReadOnlyList<AssinanteRetornoDto>>(await _repository.ObterAssinantes());
         }
 
-        public async Task AlterarSenha(AlterarSenhaDto alterarSenhaDto)
+        public async Task AlterarSenha(AlterarSenhaDto alterarSenhaDto , Guid id)
         {
-            await _usuarioService.AlterarSenha(alterarSenhaDto);
+            await _usuarioService.AlterarSenha(alterarSenhaDto, id);
         }
 
         public async Task RecuperarSenha(UsuarioSenhaDto usuarioSenhaDto)

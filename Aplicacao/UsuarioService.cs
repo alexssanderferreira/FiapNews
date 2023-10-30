@@ -22,23 +22,30 @@ namespace Aplicacao
             _configuration = configuration;
         }
 
-        public async Task AlterarSenha(AlterarSenhaDto alterarSenhaDto)
+        public async Task AlterarSenha(AlterarSenhaDto alterarSenhaDto, Guid id)
         {
-            if (alterarSenhaDto == null || string.IsNullOrWhiteSpace(alterarSenhaDto.Senha))
-                throw new Exception("Informe a senha");
-
-            if ((!string.IsNullOrWhiteSpace(alterarSenhaDto.Senha) && !string.IsNullOrWhiteSpace(alterarSenhaDto.ConfirmacaoDeSenha))
-                && (alterarSenhaDto.Senha != alterarSenhaDto.ConfirmacaoDeSenha))
-                throw new Exception("Senha e Confirmação de senha não conferem");
-
-            var usuario = _usuarioRepository.ObterIQueryable().OfType<TEntity>().Where(x => x.Login == alterarSenhaDto.Login).FirstOrDefault();
+            Usuario usuario = await _usuarioRepository.ObterPorIdAsync(id);
+            ValidarAlterarSenha(alterarSenhaDto, usuario);
             if (usuario != null)
             {
-                usuario.AlterarSenha(alterarSenhaDto.Senha);
+                usuario.AlterarSenha(alterarSenhaDto.NovaSenha);
                 await _usuarioRepository.AlterarAsync(usuario);
                 return;
             }
             throw new Exception("Login informado não encontrado");
+        }
+
+        private void ValidarAlterarSenha(AlterarSenhaDto alterarSenhaDto, Usuario usuario)
+        {
+            if (alterarSenhaDto.Login != usuario.Login)
+                throw new Exception("O usuario atual não corresponde ao do login informado");
+            if (alterarSenhaDto.SenhaAtual != usuario.Senha)
+                throw new Exception("Senha atual não confere");
+            if (alterarSenhaDto == null || string.IsNullOrWhiteSpace(alterarSenhaDto.NovaSenha))
+                throw new Exception("Informe a senha");
+            if ((!string.IsNullOrWhiteSpace(alterarSenhaDto.NovaSenha) && !string.IsNullOrWhiteSpace(alterarSenhaDto.ConfirmacaoDeNovaSenha))
+                && (alterarSenhaDto.NovaSenha != alterarSenhaDto.ConfirmacaoDeNovaSenha))
+                throw new Exception("Senha e Confirmação de senha não conferem");
         }
 
         public string GerarToken(Usuario usuario)

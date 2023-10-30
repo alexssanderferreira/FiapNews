@@ -2,7 +2,8 @@
 {
     public class AlterarSenhaDto : UsuarioSenhaDto
     {
-        public string Senha { get; set; }
-        public string ConfirmacaoDeSenha { get; set; }
+        public string SenhaAtual { get; set; }
+        public string NovaSenha { get; set; }
+        public string ConfirmacaoDeNovaSenha { get; set; }
     }
 }

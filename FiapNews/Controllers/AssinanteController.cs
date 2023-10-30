@@ -29,7 +29,8 @@ namespace FiapNews.Controllers
         {
             try
             {
-                await appService.AlterarSenha(alterarSenhaDto);
+                var id = Guid.Parse(User.Claims.FirstOrDefault(x => x.Type == "Id").Value);
+                await appService.AlterarSenha(alterarSenhaDto, id);
                 return Ok("Senha alterado com sucesso");
             }
             catch(Exception ex)
