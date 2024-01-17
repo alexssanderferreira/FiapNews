@@ -3,6 +3,7 @@
 ### Instruções para Executar o Projeto: 
 
 * Rodar pelo IIS Express:
+* 
     ![276619442-477e76cb-66fd-4b85-94be-226b57b96a92](https://github.com/alexssanderferreira/FiapNews/assets/93607568/76594c99-13a3-4819-a496-d8a4a07d15ec)
 
 
